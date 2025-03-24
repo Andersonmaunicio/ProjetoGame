@@ -16,4 +16,11 @@ class Menu:
             self.window.blit(source=self.surf, dest=self.rect)
             pygame.display.flip()
 
-        pass
+            # Check for all events
+            for event in pygame.event.get():
+                  if event.type == pygame.QUIT:
+                    pygame.quit()  # Close Windows
+                    quit()  # end pygame
+
+
+
