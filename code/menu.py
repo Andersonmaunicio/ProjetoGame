@@ -18,6 +18,7 @@ class Menu:
         pygame.mixer_music.load('./asset/Menu.mp3')  # MENU MUSIC
         pygame.mixer_music.play(-1)
         while True:
+            # DRAW IMAGES
             self.window.blit(source=self.surf, dest=self.rect)
             self.menu_text(50, "MEU", COLOR_BLUE, ((WIN_WIDTH / 2), 70))
             self.menu_text(50, "JOGO", COLOR_BLUE, ((WIN_WIDTH / 2), 120))
@@ -27,11 +28,12 @@ class Menu:
                     self.menu_text(20, MENU_OPTION[i], COLOR_YELLOW, ((WIN_WIDTH / 2), 200 + 25 * i))
                 else:
                     self.menu_text(20, MENU_OPTION[i], COLOR_WHITE, ((WIN_WIDTH / 2), 200 + 25 * i))
+            pygame.display.flip()
 
             # Check for all events
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
-                    pygame.quit()  # Close Windows
+                    pygame.quit()  # Close Window
                     quit()  # end pygame
                 if event.type == pygame.KEYDOWN:
                     if event.key == pygame.K_DOWN:  # DOWN KEY
@@ -43,9 +45,11 @@ class Menu:
                         if menu_option > 0:
                             menu_option -= 1
                         else:
-                            menu_option = 4
+                            menu_option = 3
+                    if event.key == pygame.K_RETURN:  # ENTER
+                        return MENU_OPTION[menu_option]
 
-            pygame.display.flip()
+
 
     def menu_text(self, text_size: int, text: str, text_color: tuple, text_center_pos: tuple):
         text_font: Font = pygame.font.SysFont(name="Lucida Sans Typewriter", size=text_size)
