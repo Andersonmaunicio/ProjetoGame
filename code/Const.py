@@ -8,6 +8,8 @@ MENU_OPTION = ('NEW GAME 1P',
                'NEW GAME 2P - COMPETITIVE',
                'SCORE',
                'EXIT')
+# Y
+COLOR_YELLOW = (255, 255, 0)
 
 # W
 WIN_WIDTH = 576
